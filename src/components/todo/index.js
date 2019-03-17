@@ -1,24 +1,30 @@
 import React, { Component } from 'react'
-import { linkSync } from 'fs';
+import Input from './input/index'
+import List from './list/index'
 
 class Todo extends Component {
 
   constructor(props) {
     super(props)
     this.state = {
-      list: []
+      list: [],
+      title:''
     }
   }
   render() {
+    const { title,list } = this.state
     return (
-
+      <div>
+        <Input addTitle={this.addTitle}></Input>
+        <List list={list}></List>
+      </div>
     )
   }
+
   addTitle = (title) => {
-    let { list } = this.state
-    list.push(title);
+    const { list } = this.state
     this.setState({
-      list
+      list:list.concat(title)
     })
   }
 }
