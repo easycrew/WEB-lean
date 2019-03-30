@@ -3,7 +3,9 @@ import React, { Component } from 'react'
 class List extends Component {
   constructor(props){
     super(props)
+    this.state={}
   }
+
   render() {
     const { list } = this.props
     return (
@@ -13,7 +15,6 @@ class List extends Component {
             return <li key={index}>{item}</li>
           })
         }
-        
       </ul>
     )
   }

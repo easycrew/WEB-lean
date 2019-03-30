@@ -12,7 +12,7 @@ class Todo extends Component {
     }
   }
   render() {
-    const { title,list } = this.state
+    const { list } = this.state
     return (
       <div>
         <Input addTitle={this.addTitle}></Input>
