@@ -110,3 +110,22 @@ function async(gen){
     nextStep(iter.next()); //第一次调取next
 }
 ```
+6. **于for...of配合使用，实现对象的遍历**
+
+```
+function * objectMap(obj){
+    let propKeys = Reflect.ownKeys(obj);
+    
+    for( let propKey of propKeys ){
+        yield [propKey, obj[propKey]];
+    }
+};
+
+let jane = {first:'Jane',last:'Doe'};
+for (let [key,value] of objectMap(jane)){
+    console.log(`${key}:$[value]);
+}
+// first:Jane
+// last:Doe
+```
+[Reflect.ownKeys(obj)和obj.keys()的不同之处](./Symbol.md)
