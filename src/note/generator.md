@@ -129,3 +129,19 @@ for (let [key,value] of objectMap(jane)){
 // last:Doe
 ```
 [Reflect.ownKeys(obj)和obj.keys()的不同之处](./Symbol.md)
+或者可以直接加在对象的Symbol.iterator上面
+```
+funciton * objectMap(){
+    let propKeys = Object.keys(this);
+    for(let propKey of propKeys){
+        yield [propKey,this[propKey]]
+    }
+}
+let Jane = {first:'Jane',last:'Doe'}
+Jane[Symbol.iterator] = objectMap;
+for(let [key,value] of Jane){
+    console.log(`${key}:${value}`)
+}
+// first:Jane
+// last:Doe
+```
