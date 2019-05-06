@@ -37,3 +37,5 @@ Promise.prototype.then(onFulfilled,onRejected){
   }
 }
 ```
+
+> 解决回调地狱问题
