@@ -145,3 +145,26 @@ for(let [key,value] of Jane){
 // first:Jane
 // last:Doe
 ```
+## Generator 函数简单实现
+```javascript
+function Generator(cb){
+	return (
+		function(){
+			var object = {
+				next:0;
+				stop:function(){}
+			}
+			return {
+				next:function (){
+					var ret = cb(object);
+					if(ret === undefined) return {value:undefined,done:true}
+					return {
+						value:ret,
+						done:false
+					}
+				}
+			}
+		}
+	)()
+}
+```
