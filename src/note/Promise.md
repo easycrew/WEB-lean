@@ -88,13 +88,13 @@ function MyPromise = (fn){
   }
 }
 
-MyPromise.prototype.then = function (onResolved,onRejected){
+MyPromise.prototype.then = function (onFulfilled,onRejected){
   let that = this;
   // 规范then是链式操作，需要返回一个promise
   var promise2
   // 规范 2.2.onResolved 和 onRejected 都为可选参数
   // 如果类型不是函数需要忽略，后续直接赋值同时也实现了透传
-  onResolved = typeof onResolved === 'function' ? onResolved : v => v;
+  onFulfilled = typeof onFulfilled === 'function' ? onFulfilled : v => v;
   onRejected = typeof onRejected === 'function' ? onRejected : r => throw r;
 
   if(that.state === RESOLVED){
