@@ -5,7 +5,9 @@
     * 实例继承（父对象实例、空对象中介实例）
     * 拷贝继承（jquery是通过deepCopy深拷贝实现继承）
  * 非构造函数的继承
-    * jkjjk
+    * object()
+    * 浅拷贝
+    * 深拷贝
 
 ```javascript
 function Animal(){
