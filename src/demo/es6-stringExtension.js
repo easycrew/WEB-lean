@@ -1,3 +1,5 @@
+import i18n from 'i18next';
+
 let total = 10;
 let msg1 = passthru1`The total is ${total} (${total * 1.5} with tax)`;
 let msg2 = passthru2`The total is ${total} (${total * 1.5} with tax)`;
@@ -44,9 +46,25 @@ console.log(msg2);
  * "标签模板"应用
  * 过滤HTML字符串，防止用户输入恶意内容
  */
-
-let message = SaferHTML`<p>${sender} has sent you a message</p>`;
+let sender = "<script>alert(112)</script>";
+let sender2 = "输入内容";
+let message = SaferHTML`<p>${sender} has sent you ${sender2} a message</p>`;
 
 function SaferHTML(templateData) {
-  
+  let s = templateData[0];
+  for (let i = 1; i < arguments.length; i++) {
+    let arg = String(arguments[i]);
+
+    s += arg
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;");
+
+    s += templateData[i];
+  }
+  return s;
 }
+
+console.log(message);
+
+i18n`Welcome to hhh`

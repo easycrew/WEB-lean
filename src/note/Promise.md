@@ -1,5 +1,7 @@
 # <center>Promise</center>
-## 手写Promise
+
+## 手写 Promise
+
 ```javascript
 function Promise(){
   let that = this;
@@ -40,7 +42,8 @@ Promise.prototype.then(onFulfilled,onRejected){
 
 > 解决回调地狱问题
 
-## 完整Promise
+## 完整 Promise
+
 ```javascript
 const PENDING = 'pending';
 const RESOLVED = 'resolved';
