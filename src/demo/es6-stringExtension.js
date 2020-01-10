@@ -1,5 +1,10 @@
 import i18n from 'i18next';
 
+// 标签模板
+// 函数后面紧接着一个模板字符串  比如 passthru1`The total is ${total} (${total * 1.5} with tax)`
+// 本质上他不是模板，是函数调用的一种特殊方式，【标签】指的是函数,紧跟后面的模板字符串是参数
+// 如果模板字符串中有参数，先处理成多个参数，在调用函数
+
 let total = 10;
 let msg1 = passthru1`The total is ${total} (${total * 1.5} with tax)`;
 let msg2 = passthru2`The total is ${total} (${total * 1.5} with tax)`;
@@ -67,4 +72,24 @@ function SaferHTML(templateData) {
 
 console.log(message);
 
-i18n`Welcome to hhh`
+/**
+ * 标签模板应用二
+ * 国际化处理
+ */
+let siteName = 'xxx';
+let visitorNumber = 'xxxx'
+i18n`Welcome to ${siteName}, you are visitor number ${visitorNumber}!`
+// "欢迎访问xxx，您是第xxxx位访问者！"
+
+/**
+ * 模板处理函数接受的参数实际上是一个数组
+ * 数值有一个属性raw，保存转义后的原字符串
+ */
+tag`First line\nSecond line`
+
+function tag(strings) {//["First line \nSecond line",raw:["First line\\nSecond line"]]
+  console.log(strings) //[ 'First line\nSecond line' ]
+  console.log(strings.raw) //[ 'First line\\nSecond line' ]
+  // strings.raw数组会将\n视为\\和n两个字符，而不是换行符。
+  // 是为了获取转义之前的原始模板
+}
