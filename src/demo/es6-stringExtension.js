@@ -93,3 +93,15 @@ function tag(strings) {//["First line \nSecond line",raw:["First line\\nSecond l
   // strings.raw数组会将\n视为\\和n两个字符，而不是换行符。
   // 是为了获取转义之前的原始模板
 }
+
+/**
+ * 判断一个字符由两个字节还是由四个字节组成
+ */
+
+function is32Bit(c) {
+  return c.codePointAt(0)>0xFFFF
+}
+
+is32Bit("𠮷") // true
+is32Bit("a") // false
+
