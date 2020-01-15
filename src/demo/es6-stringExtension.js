@@ -105,3 +105,14 @@ function is32Bit(c) {
 is32Bit("𠮷") // true
 is32Bit("a") // false
 
+/**
+ * 正确返回字符串长度
+ */
+function codePointLength(text) {
+  var result = text.match(/[\s\S]/gu);
+  return result ? result.length : 0;
+}
+
+var s = '𠮷𠮷';
+// s.length //4
+codePointLength(s) // 2
