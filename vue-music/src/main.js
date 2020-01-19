@@ -6,6 +6,7 @@ import fastclick from 'fastclick'
 import router from './router'
 
 import 'common/stylus/index.styl'
+process.env.Mock && require('./mock/index')
 
 Vue.config.productionTip = false
 
