@@ -1,16 +1,12 @@
 import Mock from 'mockjs'
-// import { SUCCRSS, ERROR } from './config'
+import { SUCCESS, ERROR } from './config'
 
-// const Random = Mock.Random
-
-const recommendMockData = {
-  'code': '0000',
+const recommendMockData = Object.assign({}, SUCCESS, {
   'data|1-10': [{
     'id': '@guid',
-    'picUrl': "@image('200x100', '#50B347', '#FFF', 'EasyMock')",
+    'picUrl': "@image('200x100', '#50B347', '#FFF', 'ImgMock')",
     'linkUrl': '@url'
-  }],
-  'message': 'success'
-}
+  }]
+})
 
 Mock.mock('/api/getRecommend', 'get', recommendMockData)
